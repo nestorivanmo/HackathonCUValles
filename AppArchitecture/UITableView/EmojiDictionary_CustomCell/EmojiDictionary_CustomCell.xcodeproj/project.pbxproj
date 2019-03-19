@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2E44B2922416E9000C1EB08 /* AddEditEmojiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E44B2822416E9000C1EB08 /* AddEditEmojiTableViewController.swift */; };
 		C8EEB0EB2240C50F00CE386F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EEB0EA2240C50F00CE386F /* AppDelegate.swift */; };
 		C8EEB0F02240C50F00CE386F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8EEB0EE2240C50F00CE386F /* Main.storyboard */; };
 		C8EEB0F22240C52500CE386F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8EEB0F12240C52500CE386F /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2E44B2822416E9000C1EB08 /* AddEditEmojiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEmojiTableViewController.swift; sourceTree = "<group>"; };
 		C8EEB0E72240C50F00CE386F /* EmojiDictionary_CustomCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiDictionary_CustomCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8EEB0EA2240C50F00CE386F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8EEB0EF2240C50F00CE386F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				C8EEB0FC2240C5D500CE386F /* Emoji.swift */,
 				C8EEB1002240C93500CE386F /* EmojiTableViewCell.swift */,
 				C8EEB0FE2240C68E00CE386F /* EmojiTableViewController.swift */,
+				B2E44B2822416E9000C1EB08 /* AddEditEmojiTableViewController.swift */,
 				C8EEB0EE2240C50F00CE386F /* Main.storyboard */,
 				C8EEB0F12240C52500CE386F /* Assets.xcassets */,
 				C8EEB0F32240C52500CE386F /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E44B2922416E9000C1EB08 /* AddEditEmojiTableViewController.swift in Sources */,
 				C8EEB0FD2240C5D500CE386F /* Emoji.swift in Sources */,
 				C8EEB0FF2240C68E00CE386F /* EmojiTableViewController.swift in Sources */,
 				C8EEB1012240C93500CE386F /* EmojiTableViewCell.swift in Sources */,

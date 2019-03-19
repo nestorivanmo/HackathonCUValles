@@ -15,12 +15,21 @@ class EmojiTableViewController: UITableViewController {
                             Emoji(symbol: "🏈", name: "FootBall", symbolDescription: "Ball representing football", usage: "Sports"),
                             Emoji(symbol: "⚽️", name: "Soccer", symbolDescription: "Ball representing soccer", usage: "Sports")]
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.cellLayoutMarginsFollowReadableWidth = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditEmoji" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let emoji = emojis[indexPath.row]
+            let navController = segue.destination as! UINavigationController
+            let addEditEmojiTableViewController = navController.topViewController as! AddEditEmojiTableViewController
+            addEditEmojiTableViewController.emoji = emoji
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,6 +42,7 @@ class EmojiTableViewController: UITableViewController {
             return 0
         }
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath) as! EmojiTableViewCell
         cell.update(with: emojis[indexPath.row])
