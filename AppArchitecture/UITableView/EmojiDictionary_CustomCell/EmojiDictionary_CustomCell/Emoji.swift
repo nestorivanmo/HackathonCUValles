@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class Emoji: CustomStringConvertible {
+class Emoji: CustomStringConvertible, Codable {
+    
     var symbol: String
     var name: String
     var symbolDescription: String
@@ -31,4 +32,5 @@ class Emoji: CustomStringConvertible {
         \n\t usage: \(usage)
         """
     }
+    
 }

@@ -11,9 +11,8 @@ import UIKit
 
 class EmojiTableViewController: UITableViewController {
     
-    var emojis : [Emoji] = [Emoji(symbol: "🎾", name: "Tennis Ball", symbolDescription: "Ball representing tennis", usage: "Sports"),
-                            Emoji(symbol: "🏈", name: "FootBall", symbolDescription: "Ball representing football", usage: "Sports"),
-                            Emoji(symbol: "⚽️", name: "Soccer", symbolDescription: "Ball representing soccer", usage: "Sports")]
+    var emojis = [Emoji]()
+    var diskManager = DiskManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +22,14 @@ class EmojiTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44.0
+        
+        let savedEmojis = diskManager.loadFromFile()
+        if savedEmojis.count == 0 {
+           emojis = diskManager.loadSampleEmojis()
+        }else if savedEmojis.count > 0 {
+            emojis = savedEmojis
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,6 +63,8 @@ class EmojiTableViewController: UITableViewController {
         let movedEmoji = emojis.remove(at: sourceIndexPath.row)
         emojis.insert(movedEmoji, at: destinationIndexPath.row)
         tableView.reloadData()
+        
+        diskManager.saveToFile(emojis: emojis)
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -67,6 +76,8 @@ class EmojiTableViewController: UITableViewController {
             emojis.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        
+        diskManager.saveToFile(emojis: emojis)
     }
     
     @IBAction func unwindToEmojiTableView(segue:UIStoryboardSegue){
@@ -83,6 +94,8 @@ class EmojiTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+        
+        diskManager.saveToFile(emojis: emojis)
+        
     }
-    
 }
