@@ -17,9 +17,12 @@ class EmojiTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.cellLayoutMarginsFollowReadableWidth = true
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationController?.navigationBar.prefersLargeTitles = true 
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,4 +68,21 @@ class EmojiTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
+    
+    @IBAction func unwindToEmojiTableView(segue:UIStoryboardSegue){
+        guard segue.identifier == "saveUnwind" else {return}
+        let sourceViewController = segue.source as! AddEditEmojiTableViewController
+        
+        if let emoji = sourceViewController.emoji {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                emojis[selectedIndexPath.row] = emoji
+                tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+            }else {
+                let newIndexPath = IndexPath(row: emojis.count, section: 0)
+                emojis.append(emoji)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    }
+    
 }
